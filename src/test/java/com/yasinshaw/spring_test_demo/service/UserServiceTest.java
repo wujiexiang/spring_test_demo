@@ -43,4 +43,15 @@ public class UserServiceTest {
         assertThat(found.getId()).isEqualTo(1L);
         assertThat(found.getUsername()).isEqualTo("username");
     }
+
+    @Test
+    public void couldNotGetUser_whenIdNotExists() {
+        when(userRepository.findById(-1L))
+                .thenReturn(null);
+
+        User found = userService.getUserById(1L);
+
+        assertThat(found.getId()).isEqualTo(0L);
+        assertThat(found.getUsername()).isEqualTo("no such user");
+    }
 }
