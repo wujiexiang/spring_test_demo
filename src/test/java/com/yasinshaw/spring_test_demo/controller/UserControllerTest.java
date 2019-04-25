@@ -39,7 +39,7 @@ class UserControllerTest {
     private UserService userService;
 
     @Test
-    void givenUsers_whenGetUsers_thenReturnJsonArray() throws Exception {
+    void givenUsers_whenGetUsers_thenReturnJsonPage() throws Exception {
         Mockito.when(userService.getUsers(null)).thenReturn(getUsersPage());
 
         mvc.perform(get("/users"))
